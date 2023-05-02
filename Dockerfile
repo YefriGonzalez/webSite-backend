@@ -11,6 +11,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 ENV WEB_DOCUMENT_ROOT /app/public
 ENV APP_ENV production
+ENV APP_DEBUG false
+ENV LOG_CHANNEL stderr
 WORKDIR /app
 COPY . .
 
