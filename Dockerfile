@@ -22,4 +22,5 @@ RUN php artisan route:cache
 RUN php artisan view:cache
 
 RUN chown -R application:application .
+RUN chmod -R 777 storage && chmod -R 777 bootstrap/cache
 USER application
