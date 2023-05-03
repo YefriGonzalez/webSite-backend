@@ -1,5 +1,4 @@
-
-FROM alpine:latest
+FROM webdevops/php-nginx:8.1-alpine
 
 # Install Laravel framework system requirements (https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading)
 RUN apk add oniguruma-dev postgresql-dev libxml2-dev
@@ -10,7 +9,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 ENV WEB_DOCUMENT_ROOT /app/public
 ENV APP_ENV production
 WORKDIR /app
-COPY composer.json composer.lock
 COPY . .
 
 RUN composer install --no-interaction --optimize-autoloader --no-dev
