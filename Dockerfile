@@ -12,7 +12,7 @@ WORKDIR /app
 COPY . .
 
 
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+RUN composer install --ignore-platform-req=ext-tokenizer --ignore-platform-req=ext-fileinfo
 # Optimizing Configuration loading
 RUN php artisan config:cache
 # Optimizing Route loading
