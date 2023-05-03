@@ -5,8 +5,6 @@ FROM alpine:latest
 RUN apk update && apk upgrade
 RUN apk add bash
 RUN apk add nginx
-
-RUN mkdir /var/run/php
 # Copy Composer binary from the Composer official Docker image
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
