@@ -10,7 +10,7 @@ ENV WEB_DOCUMENT_ROOT /app/public
 ENV APP_ENV production
 WORKDIR /app
 COPY . .
-COPY composer.json composer.lock
+
 
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 # Optimizing Configuration loading
