@@ -2,8 +2,7 @@ FROM trafex/php-nginx:latest
 USER root
 # Install Laravel framework system requirements (https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading)
 RUN apk add oniguruma-dev postgresql-dev libxml2-dev
-RUN apk update && apk add --no-cache \
-    php8-dev \
+RUN apk update && apk upgrade && apk add --no-cache \
     autoconf \
     g++ \
     make \
