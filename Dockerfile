@@ -17,7 +17,7 @@ RUN php artisan route:clear
 RUN php artisan config:cache
 # Optimizing Route loading
 # Optimizing View loading
-RUN php artisan view:cache
+#RUN php artisan view:cache
 
 RUN chown -R application:application .
 USER application
