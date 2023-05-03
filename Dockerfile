@@ -1,5 +1,5 @@
 FROM webdevops/php-nginx:8.1-alpine
-
+COPY my-nginx-settings.conf /opt/docker/etc/nginx/vhost.common.d/custom.conf
 # Install Laravel framework system requirements (https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading)
 RUN apk add oniguruma-dev postgresql-dev libxml2-dev
 
@@ -20,4 +20,3 @@ RUN php artisan route:cache
 RUN php artisan view:cache
 
 RUN chown -R application:application .
-CMD ["/bin/bash", "-c", "nginx -g 'daemon off;'"]
