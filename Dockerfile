@@ -1,5 +1,4 @@
-FROM webdevops/php-nginx:8.1-alpine
-COPY my-nginx-settings.conf /opt/docker/etc/nginx/vhost.common.d/custom.conf
+FROM trafex/php-nginx:latest
 # Install Laravel framework system requirements (https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading)
 RUN apk add oniguruma-dev postgresql-dev libxml2-dev
 
@@ -11,7 +10,7 @@ ENV APP_ENV production
 WORKDIR /app
 COPY . .
 
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+RUN composer install --no-interaction --optimize-autoloader --no-dev --no-progress
 # Optimizing Configuration loading
 RUN php artisan config:cache
 # Optimizing Route loading
