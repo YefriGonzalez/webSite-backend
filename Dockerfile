@@ -1,6 +1,7 @@
 FROM trafex/php-nginx:latest
 #FROM webdevops/php-nginx:8.1-alpine
 
+USER root
 # Install Laravel framework system requirements (https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading)
 RUN apk add oniguruma-dev postgresql-dev libxml2-dev
 
@@ -21,3 +22,4 @@ RUN php artisan route:cache
 RUN php artisan view:cache
 
 RUN chown -R application:application .
+USER application
