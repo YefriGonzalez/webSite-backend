@@ -1,5 +1,5 @@
 #FROM trafex/php-nginx:latest
-FROM webdevops/php-nginx:8.1-alpine
+FROM webdevops/php-nginx:8.2-alpine
 
 USER root
 # Install Laravel framework system requirements (https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading)
