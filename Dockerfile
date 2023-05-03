@@ -10,7 +10,7 @@ ENV WEB_DOCUMENT_ROOT /app/public
 ENV APP_ENV production
 WORKDIR /app
 COPY . .
-RUN composer install --no-interaction --optimize-autoloader --no-dev 
+RUN composer install --optimize-autoloader --no-dev --ignore-platform-req=ext-tokenizer --ignore-platform-req=ext-fileinfo
 # Optimizing Configuration loading
 RUN php artisan route:clear
 RUN php artisan route:cache
