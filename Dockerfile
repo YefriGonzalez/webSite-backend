@@ -1,14 +1,8 @@
 FROM trafex/php-nginx:latest
 USER root
 # Install Laravel framework system requirements (https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading)
+RUN apk update && apk upgrade
 RUN apk add oniguruma-dev postgresql-dev libxml2-dev
-RUN apk update && apk upgrade && apk add --no-cache \
-    autoconf \
-    g++ \
-    make \
-    && pecl install xdebug \
-    && docker-php-ext-enable xdebug \
-    && docker-php-ext-install tokenizer
 # Copy Composer binary from the Composer official Docker image
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
