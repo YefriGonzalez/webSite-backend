@@ -11,7 +11,7 @@ ENV APP_ENV production
 WORKDIR /app
 COPY . .
 
-RUN composer install --no-interaction --optimize-autoloader --no-dev  --ignore-platform-req=php --ignore-platform-req=ext-zip
+RUN composer install --no-interaction --optimize-autoloader --no-dev --ignore-platform-req=ext-tokenizer --ignore-platform-req=ext-fileinfo  --ignore-platform-req=php --ignore-platform-req=ext-zip
 # Optimizing Configuration loading
 RUN php artisan config:cache
 # Optimizing Route loading
