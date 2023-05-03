@@ -13,7 +13,7 @@ COPY . .
 RUN composer install --optimize-autoloader --no-dev --ignore-platform-req=ext-tokenizer --ignore-platform-req=ext-fileinfo
 # Optimizing Configuration loading
 RUN php artisan route:clear
-RUN php artisan route:cache
+#RUN php artisan route:cache
 RUN php artisan config:cache
 # Optimizing Route loading
 # Optimizing View loading
