@@ -1,9 +1,13 @@
 
-FROM webdevops/php-nginx:8.2-alpine
+FROM alpine:latest
 
 # Install Laravel framework system requirements (https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading)
-RUN apk add oniguruma-dev postgresql-dev libxml2-dev
-
+RUN apk update && apk upgrade
+RUN apk add bash
+RUN apk add nginx
+RUN apk add php8 php8-fpm php8-opcache
+RUN apk add php8-gd php8-zlib php8-curl
+RUN mkdir /var/run/php
 # Copy Composer binary from the Composer official Docker image
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -22,3 +26,4 @@ RUN php artisan route:cache
 RUN php artisan view:cache
 
 RUN chown -R application:application .
+CMD ["/bin/bash", "-c", "php-fpm8 && chmod 777 /var/run/php/php8-fpm.sock && chmod 755 /usr/share/nginx/html/* && nginx -g 'daemon off;'"]
