@@ -12,7 +12,7 @@ WORKDIR /app
 COPY . .
 COPY composer.json composer.lock
 
-RUN composer install --no-interaction --optimize-autoloader --no-dev --no-progress
+RUN composer install --no-interaction --optimize-autoloader --no-dev
 # Optimizing Configuration loading
 RUN php artisan config:cache
 # Optimizing Route loading
