@@ -1,4 +1,5 @@
 FROM trafex/php-nginx:latest
+USER root
 # Install Laravel framework system requirements (https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading)
 RUN apk add oniguruma-dev postgresql-dev libxml2-dev
 
@@ -9,6 +10,7 @@ ENV WEB_DOCUMENT_ROOT /app/public
 ENV APP_ENV production
 WORKDIR /app
 COPY . .
+COPY composer.json composer.lock
 
 RUN composer install --no-interaction --optimize-autoloader --no-dev --no-progress
 # Optimizing Configuration loading
@@ -19,3 +21,4 @@ RUN php artisan route:cache
 RUN php artisan view:cache
 
 RUN chown -R application:application .
+USER application
